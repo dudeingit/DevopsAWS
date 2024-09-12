@@ -1,0 +1,231 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+{\colortbl ;\red0\green77\blue187;}
+{\*\generator Riched20 10.0.22621}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\qc\ul\b\f0\fs28\lang9 List AWS Resource usage in a virtual machine\ulnone\b0\fs24\par
+
+\pard\sa200\sl276\slmult1\par
+Reference used: AWS cli documentation to fetch commands\par
+\b Code:\b0\par
+#!/bin/bash\par
+##############\par
+#Author: Rajkamal\par
+#Version: v1\par
+##############\par
+# This script will report AWS resource usage\par
+\par
+set -x #debug mode\par
+#AWS S3\par
+#AWS EC2\par
+#AWS Lambda\par
+#AWS IAM user\par
+\par
+\cf1 #list no. of s3 buckets\cf0\par
+echo "Print no. of s3 buckets"\par
+aws s3 ls\par
+\cf1 #list no. of ec2 instances\cf0\par
+echo "Print list of ec2 instances"\par
+aws ec2 describe-instances\par
+\cf1 #list IAM users\cf0\par
+echo "Print list of IAM users"\par
+aws iam list-users\par
+\cf1 #list lambda functions\cf0\par
+echo "Print list of lambda functions"\par
+aws lambda list-functions\par
+\par
+Code execution: ./<filename>\par
+Output: \par
++ echo 'Print no. of s3 buckets'\par
+Print no. of s3 buckets\par
++ aws s3 ls\par
++ echo 'Print list of ec2 instances'\par
+Print list of ec2 instances\par
++ aws ec2 describe-instances\par
+\{\par
+    "Reservations": [\par
+        \{\par
+            "Groups": [],\par
+            "Instances": [\par
+                \{\par
+                    "AmiLaunchIndex": 0,\par
+                    "ImageId": "ami-0e86e20dae9224db8",\par
+                    "InstanceId": "i-0614e39d77a09d837",\par
+                    "InstanceType": "t2.micro",\par
+                    "KeyName": "getmekey",\par
+                    "LaunchTime": "2024-09-12T06:00:27+00:00",\par
+                    "Monitoring": \{\par
+                        "State": "disabled"\par
+                    \},\par
+                    "Placement": \{\par
+                        "AvailabilityZone": "us-east-1c",\par
+                        "GroupName": "",\par
+                        "Tenancy": "default"\par
+                    \},\par
+                    "PrivateDnsName": "ip-172-31-90-11.ec2.internal",\par
+                    "PrivateIpAddress": "172.31.90.11",\par
+                    "ProductCodes": [],\par
+                    "PublicDnsName": "ec2-35-171-16-251.compute-1.amazonaws.com",\par
+                    "PublicIpAddress": "35.171.16.251",\par
+                    "State": \{\par
+                        "Code": 16,\par
+                        "Name": "running"\par
+                    \},\par
+                    "StateTransitionReason": "",\par
+                    "SubnetId": "subnet-03dc05672907f6934",\par
+                    "VpcId": "vpc-0764bb685b3bb81f6",\par
+                    "Architecture": "x86_64",\par
+                    "BlockDeviceMappings": [\par
+                        \{\par
+                            "DeviceName": "/dev/sda1",\par
+                            "Ebs": \{\par
+                                "AttachTime": "2024-09-06T08:16:04+00:00",\par
+                                "DeleteOnTermination": true,\par
+                                "Status": "attached",\par
+                                "VolumeId": "vol-05d573a374d854859"\par
+                            \}\par
+                        \}\par
+                    ],\par
+                    "ClientToken": "548e3e9a-49d5-402c-9d8f-b7d55d3a21e5",\par
+                    "EbsOptimized": false,\par
+                    "EnaSupport": true,\par
+                    "Hypervisor": "xen",\par
+                    "NetworkInterfaces": [\par
+                        \{\par
+                            "Association": \{\par
+                                "IpOwnerId": "amazon",\par
+                                "PublicDnsName": "ec2-35-171-16-251.compute-1.amazonaws.com",\par
+                                "PublicIp": "35.171.16.251"\par
+                            \},\par
+                            "Attachment": \{\par
+                                "AttachTime": "2024-09-06T08:16:03+00:00",\par
+                                "AttachmentId": "eni-attach-0fb74ad84e179a37e",\par
+                                "DeleteOnTermination": true,\par
+                                "DeviceIndex": 0,\par
+                                "Status": "attached",\par
+                                "NetworkCardIndex": 0\par
+                            \},\par
+                            "Description": "",\par
+                            "Groups": [\par
+                                \{\par
+                                    "GroupName": "quicksec",\par
+                                    "GroupId": "sg-01f19964de3583249"\par
+                                \}\par
+                            ],\par
+                            "Ipv6Addresses": [],\par
+                            "MacAddress": "12:61:6c:58:cb:3b",\par
+                            "NetworkInterfaceId": "eni-04eeaa8ae7b060903",\par
+                            "OwnerId": "022499012373",\par
+                            "PrivateDnsName": "ip-172-31-90-11.ec2.internal",\par
+                            "PrivateIpAddress": "172.31.90.11",\par
+                            "PrivateIpAddresses": [\par
+                                \{\par
+                                    "Association": \{\par
+                                        "IpOwnerId": "amazon",\par
+                                        "PublicDnsName": "ec2-35-171-16-251.compute-1.amazonaws.com",\par
+                                        "PublicIp": "35.171.16.251"\par
+                                    \},\par
+                                    "Primary": true,\par
+                                    "PrivateDnsName": "ip-172-31-90-11.ec2.internal",\par
+                                    "PrivateIpAddress": "172.31.90.11"\par
+                                \}\par
+                            ],\par
+                            "SourceDestCheck": true,\par
+                            "Status": "in-use",\par
+                            "SubnetId": "subnet-03dc05672907f6934",\par
+                            "VpcId": "vpc-0764bb685b3bb81f6",\par
+                            "InterfaceType": "interface"\par
+                        \}\par
+                    ],\par
+                    "RootDeviceName": "/dev/sda1",\par
+                    "RootDeviceType": "ebs",\par
+                    "SecurityGroups": [\par
+                        \{\par
+                            "GroupName": "quicksec",\par
+                            "GroupId": "sg-01f19964de3583249"\par
+                        \}\par
+                    ],\par
+                    "SourceDestCheck": true,\par
+                    "Tags": [\par
+                        \{\par
+                            "Key": "Name",\par
+                            "Value": "fineprojec2"\par
+                        \}\par
+                    ],\par
+                    "VirtualizationType": "hvm",\par
+                    "CpuOptions": \{\par
+                        "CoreCount": 1,\par
+                        "ThreadsPerCore": 1\par
+                    \},\par
+                    "CapacityReservationSpecification": \{\par
+                        "CapacityReservationPreference": "open"\par
+                    \},\par
+                    "HibernationOptions": \{\par
+                        "Configured": false\par
+                    \},\par
+                    "MetadataOptions": \{\par
+                        "State": "applied",\par
+                        "HttpTokens": "required",\par
+                        "HttpPutResponseHopLimit": 2,\par
+                        "HttpEndpoint": "enabled",\par
+                        "HttpProtocolIpv6": "disabled",\par
+                        "InstanceMetadataTags": "disabled"\par
+                    \},\par
+                    "EnclaveOptions": \{\par
+                        "Enabled": false\par
+                    \},\par
+                    "BootMode": "uefi-preferred",\par
+                    "PlatformDetails": "Linux/UNIX",\par
+                    "UsageOperation": "RunInstances",\par
+                    "UsageOperationUpdateTime": "2024-09-06T08:16:03+00:00",\par
+                    "PrivateDnsNameOptions": \{\par
+                        "HostnameType": "ip-name",\par
+                        "EnableResourceNameDnsARecord": true,\par
+                        "EnableResourceNameDnsAAAARecord": false\par
+                    \},\par
+                    "MaintenanceOptions": \{\par
+                        "AutoRecovery": "default"\par
+                    \},\par
+                    "CurrentInstanceBootMode": "legacy-bios"\par
+                \}\par
+            ],\par
+            "OwnerId": "022499012373",\par
+            "ReservationId": "r-09e08f4da0c0119ad"\par
+        \}\par
+    ]\par
+\}\par
++ echo 'Print list of IAM users'\par
+Print list of IAM users\par
++ aws iam list-users\par
+\{\par
+    "Users": []\par
+\}\par
++ echo 'Print list of lambda functions'\par
+Print list of lambda functions\par
++ aws lambda list-functions\par
+\{\par
+    "Functions": []\par
+\}\par
+(END)\par
+
+\pard\sa200\sl276\slmult1\qc\ul\b\fs28 To get the instance information alone\par
+
+\pard\sa200\sl276\slmult1\ulnone\b0\fs24 Command: aws ec2 describe-instances | jq '.Reservations[].I\par
+nstances[].InstanceId'\par
+O/P: "i-0614e39d77a09d837"\par
+
+\pard\sa200\sl276\slmult1\qc\par
+
+\pard\sa200\sl276\slmult1\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+}
+ 
